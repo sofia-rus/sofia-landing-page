@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Words That Stick — Sofia Rus</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg:#FAFAF7;
+    --sage:#3B5D50;
+    --sage-light:#E7EDE9;
+    --sage-mid:#C7D5CD;
+    --ink:#232323;
+    --ink-soft:#5b5b58;
+    --cream:#FAFAF7;
+    --glass-bg:rgba(255,255,255,.55);
+    --glass-border:rgba(255,255,255,.6);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 550px at 10% 0%, rgba(59,93,80,.12), transparent 60%),
+      radial-gradient(ellipse 1000px 650px at 90% 25%, rgba(199,213,205,.4), transparent 62%),
+      radial-gradient(ellipse 900px 600px at 15% 100%, rgba(59,93,80,.09), transparent 60%),
+      var(--bg);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Fraunces',serif;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 24px;}
+
+  nav{
+    position:sticky;top:0;z-index:20;
+    backdrop-filter:blur(16px) saturate(160%);
+    -webkit-backdrop-filter:blur(16px) saturate(160%);
+    background:rgba(250,250,247,.72);
+    border-bottom:1px solid rgba(199,213,205,.5);
+  }
+  .nav-inner{max-width:640px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-brand{font-family:'Fraunces',serif;font-size:17px;font-weight:600;}
+
+  .hero{padding:64px 0 44px;text-align:center;}
+  .eyebrow-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--glass-bg);backdrop-filter:blur(10px);
+    border:1px solid var(--glass-border);
+    padding:7px 16px;border-radius:100px;
+    font-size:12px;font-weight:600;letter-spacing:.04em;
+    color:var(--sage);text-transform:uppercase;margin-bottom:24px;
+    box-shadow:0 4px 20px rgba(59,93,80,.08);
+  }
+  .hero h1{font-size:clamp(32px,6vw,48px);font-weight:500;line-height:1.15;letter-spacing:-.015em;margin-bottom:16px;}
+  .hero p.lead{font-size:16.5px;color:var(--ink-soft);max-width:440px;margin:0 auto;}
+
+  .glass{
+    background:var(--glass-bg);
+    backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border:1px solid var(--glass-border);
+    border-radius:20px;
+    box-shadow:0 8px 32px rgba(59,93,80,.08);
+  }
+
+  .section{padding:40px 0;}
+  .section-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);text-align:center;margin-bottom:10px;}
+  .section-head h2{font-size:clamp(24px,4vw,32px);font-weight:500;text-align:center;letter-spacing:-.01em;margin-bottom:32px;}
+
+  /* word card demo */
+  .word-card{padding:0;overflow:hidden;}
+  .word-card-top{
+    background:var(--sage);color:var(--cream);
+    padding:34px 30px 28px;text-align:center;
+  }
+  .word-card-top .tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75;margin-bottom:12px;}
+  .word-card-top h3{font-family:'Fraunces',serif;font-size:38px;font-weight:600;margin-bottom:6px;}
+  .word-card-top .phon{font-size:14px;opacity:.8;font-style:italic;}
+  .word-card-body{padding:26px 30px 30px;}
+  .word-card-body .def-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);margin-bottom:6px;}
+  .word-card-body .def{font-size:15.5px;color:var(--ink);margin-bottom:18px;}
+  .word-card-body .ex-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);margin-bottom:6px;}
+  .word-card-body .ex{font-size:15px;color:var(--ink-soft);font-style:italic;padding-left:14px;border-left:2px solid var(--sage-mid);}
+
+  /* how it works */
+  .steps{display:flex;flex-direction:column;gap:10px;}
+  .step{display:flex;align-items:center;gap:16px;padding:16px 18px;}
+  .step .num{
+    flex-shrink:0;width:34px;height:34px;border-radius:50%;
+    background:var(--sage-light);color:var(--sage);
+    font-family:'Fraunces',serif;font-size:15px;font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step p{font-size:14.5px;color:var(--ink);}
+  .step p strong{font-weight:600;}
+
+  /* social CTAs */
+  .social-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .social-card{
+    padding:30px 20px;text-align:center;text-decoration:none;color:inherit;
+    display:block;transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .social-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(59,93,80,.16);}
+  .social-icon{
+    width:48px;height:48px;border-radius:14px;margin:0 auto 14px;
+    display:flex;align-items:center;justify-content:center;color:#fff;
+  }
+  .social-icon.ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+  .social-icon.fb{background:#1877F2;}
+  .social-card .label{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:3px;}
+  .social-card .sub{font-size:12.5px;color:var(--ink-soft);}
+
+  footer{text-align:center;padding:50px 0 60px;font-size:12.5px;color:var(--ink-soft);}
+
+  @media (max-width:480px){
+    .social-grid{grid-template-columns:1fr;}
+    .word-card-top h3{font-size:32px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand serif">Sofia Rus</span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow-pill">Zilnic, gratuit</div>
+    <h1 class="serif">Words That Stick</h1>
+    <p class="lead">Postez zilnic cuvinte care îți rămân în cap. Un cuvânt, într-un context real, ușor de reținut, fără liste plictisitoare și fără memorare seacă.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-eyebrow">Așa arată</div>
+    <div class="section-head"><h2 class="serif">Un exemplu de zi</h2></div>
+
+    <div class="glass word-card">
+      <div class="word-card-top">
+        <div class="tag">Cuvântul zilei</div>
+        <h3 class="serif">Overwhelmed</h3>
+        <p class="phon">/ˌoʊ.vɚˈwelmd/</p>
+      </div>
+      <div class="word-card-body">
+        <div class="def-label">Ce înseamnă</div>
+        <p class="def">Copleșit, atunci când ai prea multe de făcut sau de simțit deodată și nu mai știi de unde să începi.</p>
+        <div class="ex-label">În context</div>
+        <p class="ex">"I felt overwhelmed with all the homework, so I took a short break first."</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-eyebrow">Cum funcționează</div>
+    <div class="section-head"><h2 class="serif">Simplu, în fiecare zi</h2></div>
+
+    <div class="glass steps">
+      <div class="step">
+        <div class="num">1</div>
+        <p><strong>Un cuvânt nou, în fiecare zi.</strong> Ales să fie de folos, nu doar rar sau exotic.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <p><strong>Într-un context real.</strong> O propoziție care arată exact cum și când îl folosești.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <p><strong>Ușor de reținut.</strong> Gândit să-ți rămână în minte, nu doar să-l citești și să-l uiți.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-eyebrow">Urmărește</div>
+    <div class="section-head"><h2 class="serif">Alege unde vrei să vezi cuvintele</h2></div>
+
+    <div class="social-grid">
+      <a href="https://instagram.com/" target="_blank" class="glass social-card">
+        <div class="social-icon ig">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </div>
+        <div class="label">Instagram</div>
+        <div class="sub">Cuvinte zilnice, format vizual</div>
+      </a>
+      <a href="https://facebook.com/" target="_blank" class="glass social-card">
+        <div class="social-icon fb">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        </div>
+        <div class="label">Facebook</div>
+        <div class="sub">Cuvinte zilnice, plus context</div>
+      </a>
+    </div>
+  </section>
+
+  <footer>Sofia Rus · Arad, România</footer>
+</div>
+
+</body>
+</html>
